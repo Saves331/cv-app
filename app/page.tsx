@@ -44,11 +44,14 @@ export default function Home() {
   const experience = mappedCvData.find((item: any) => item.type === 'experience');
   const project = mappedCvData.find((item: any) => item.type === 'project');
   const skill = mappedCvData.filter((item: any) => item.type === 'skill');
+  const webLink = mappedCvData.filter((item: any) => item.type === 'weblink');
+
+  console.log(webLink);
   
   return (
     <>
 
-      <Navbar name={about.title} />
+      <Navbar name={about.title} webLink={webLink} />
 
       <div>
         <h1>
