@@ -5,7 +5,8 @@ import About from "./components/About";
 import Experience from "./components/Experience";
 import Project from "./components/Project";
 import Skill from "./components/Skill";
-import './global.css';
+import Navbar from "./components/Navbar";
+import './globals.css';
 
 
 export default function Home() {
@@ -29,7 +30,7 @@ export default function Home() {
   }, [])
 
   if (!loading || !cvData) {
-    return <div>Loading...</div>;
+    return <div className="flex justify-center items-center h-screen text-3xl font-semibold">Loading...</div>;
   }
 
   const mappedCvData = cvData.data.slice(1).map((row: any[]) => ({
@@ -46,12 +47,15 @@ export default function Home() {
   
   return (
     <>
+
+      <Navbar name={about.title} />
+
       <div>
         <h1>
+          <hr />
           Moje CV
         </h1>
 
-        <pre>{JSON.stringify(mappedCvData, null, 2)}</pre>
 
         <h2>About</h2>
         {about && (<About name={about.title} role={about.description} year={about.year} />)}
