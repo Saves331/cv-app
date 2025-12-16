@@ -1,0 +1,7 @@
+1. Zmen Title
+2. Poriesit hover v burgerMenu
+3. zacat styling About.tsx (https://www.youtube.com/watch?v=ldwlOzRvYOU) - podla coho moze byt style
+4. popridavat linky do navbaru
+5. asi vse
+
+(zajtra daj git restore .)
