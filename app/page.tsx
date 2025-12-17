@@ -54,13 +54,9 @@ export default function Home() {
       <Navbar name={about.title} webLink={webLink} />
 
       <div>
-        <h1>
-          <hr />
-          Moje CV
-        </h1>
+      
 
 
-        <h2>About</h2>
         {about && (<About name={about.title} role={about.description} year={about.year} />)}
 
         <h2>Experience</h2>

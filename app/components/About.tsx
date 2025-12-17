@@ -1,3 +1,6 @@
+import profilePhoto from '../../public/images/profile.jpg';
+import { Github, Linkedin } from "lucide-react";
+
 type AboutProps = {
     name: string;
     role: string;
@@ -6,10 +9,26 @@ type AboutProps = {
 
 function About({ name, role, year }: AboutProps) {
   return (
-    <section>
-        <p>Name: {name}</p>
-        <p>Role: {role}</p>
-        <p>Year: {year}</p>
+    <section className='flex justify-center items-center gap-20 h-[90vh]'>
+
+      <div>
+          <img src={profilePhoto.src} alt={name}  className='rounded-full w-75 h-75 object-cover'/>
+      </div>
+
+      <div className='text-center tracking-wider'>
+        <h3>Hello, I'm</h3>
+        <h1>{name}</h1>
+        <h2>{role}</h2>
+
+        <button className='border p-3 cursor-pointer hover:bg-gray-200 hover:text-black  transition-all duration-300'>Download CV</button>
+
+      <div className='flex justify-center gap-3 mt-4'>
+       <a href="" className='hover:text-gray-400'><Github size={24}/></a> 
+       <a href="" className='hover:text-gray-400'><Linkedin size={24}/></a> 
+      </div>
+        
+      </div>
+
     </section>
   )
 }
