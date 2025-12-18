@@ -6,11 +6,11 @@ type ExperienceProps = {
 
 function Experience({ jobTitle, company, year }: ExperienceProps) {
   return (
-    <div>
+    <section className="h-screen">
         <p>Job Title: {jobTitle}</p>
         <p>Company: {company}</p>
         <p>Year: {year}</p>
-    </div>
+    </section>
   )
 }
 

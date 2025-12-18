@@ -43,7 +43,10 @@ export default function Home() {
   const about = mappedCvData.find((item: any) => item.type === 'about');
   const experience = mappedCvData.find((item: any) => item.type === 'experience');
   const project = mappedCvData.find((item: any) => item.type === 'project');
-  const skill = mappedCvData.filter((item: any) => item.type === 'skill');
+  const skill = mappedCvData.filter((item: any) => item.type === 'skill').map((skillItem: any) => ({
+    name: skillItem.title,
+    level: skillItem.description,
+  }));
   const webLink = mappedCvData.filter((item: any) => item.type === 'weblink');
 
   console.log(webLink);
@@ -59,17 +62,14 @@ export default function Home() {
 
         {about && (<About name={about.title} role={about.description} year={about.year} />)}
 
-        <h2>Experience</h2>
-        {experience && (<Experience jobTitle={experience.title} company={experience.description} year={experience.year} />)}
-        
+        {/* {experience && (<Experience jobTitle={experience.title} company={experience.description} year={experience.year} />)} */}
+
+        <Skill skills={skill}></Skill>
 
         <h2>Project</h2>
         {project && (<Project title={project.title} description={project.description} year={project.year} />)}
 
-        <h2>Skill</h2>
-        {skill && skill.map((skill: any, index: number) => (
-          <Skill key={index} name={skill.title} level={skill.description} />
-        ))}
+       
       </div>
     </>
   );
