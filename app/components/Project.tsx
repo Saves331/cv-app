@@ -4,12 +4,28 @@ type  ProjectProps = {
     year: string;
 }
 
-function Project({ title, description, year }: ProjectProps) {
+type Project = {
+    projects: ProjectProps[];
+}
+
+function Project({projects}: Project) {
   return (
-    <section>
-        <p>Title: {title}</p>
-        <p>Description: {description}</p>
-        <p>Year: {year}</p>
+    <section className="h-screen" id="projects">
+
+        <div>
+
+        </div>
+
+
+        <div>
+          {projects.map((project, index) => ( 
+          <div key={index}>
+            <h2>{project.title}</h2>
+            <p>{project.description}</p>
+            <span>{project.year}</span>
+          </div>
+        ))}
+        </div>
     </section>
   )
 }

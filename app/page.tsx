@@ -41,12 +41,18 @@ export default function Home() {
   }))
 
   const about = mappedCvData.find((item: any) => item.type === 'about');
-  const experience = mappedCvData.find((item: any) => item.type === 'experience');
-  const project = mappedCvData.find((item: any) => item.type === 'project');
+  /* const experience = mappedCvData.find((item: any) => item.type === 'experience'); */
+  const project = mappedCvData.filter((item: any) => item.type === 'project').map((projectItem: any) => ({
+    title: projectItem.title,
+    description: projectItem.description,
+    year: projectItem.year,
+  }));
+
   const skill = mappedCvData.filter((item: any) => item.type === 'skill').map((skillItem: any) => ({
     name: skillItem.title,
     level: skillItem.description,
   }));
+
   const webLink = mappedCvData.filter((item: any) => item.type === 'weblink');
 
   console.log(webLink);
@@ -66,8 +72,9 @@ export default function Home() {
 
         <Skill skills={skill}></Skill>
 
-        <h2>Project</h2>
-        {project && (<Project title={project.title} description={project.description} year={project.year} />)}
+        
+        <Project projects={project}></Project>
+       
 
        
       </div>
