@@ -9,7 +9,7 @@ type AboutProps = {
 
 function About({ name, role, year }: AboutProps) {
   return (
-    <section className='flex justify-center items-center gap-20 h-[90vh]'>
+    <section className='flex justify-center items-center gap-20 h-[85vh]'>
 
       <div>
           <img src={profilePhoto.src} alt={name}  className='rounded-full w-75 h-75 object-cover'/>

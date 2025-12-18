@@ -36,7 +36,7 @@ function Navbar({ name, webLink }: Props) {
     }, [isBurgerOpen]);
 
   return (
-    <section className="flex justify-between items-center p-4 bg-gray-800 text-white relative h-[10vh] lg:px-15">
+    <section className="flex justify-between items-center p-4 bg-gray-800 text-white relative h-[15vh] lg:px-15">
         <div className="text-3xl lg:text-4xl font-semibold lg:w-1/2">{name}</div>
 
      {/* Burger Menu */}
