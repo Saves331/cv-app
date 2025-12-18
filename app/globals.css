@@ -26,6 +26,13 @@
   box-sizing: border-box;
 }
 
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
 body {
   margin: 0;
   font-family: Inter, system-ui, sans-serif;

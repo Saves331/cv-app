@@ -12,7 +12,7 @@ function About({ name, role, year }: AboutProps) {
     <section className='flex flex-col md:flex-row justify-center items-center gap-20 h-[85vh]'>
 
       <div>
-          <img src={profilePhoto.src} alt={name}  className='rounded-full w-75 h-75 object-cover'/>
+          <img src={profilePhoto.src} alt={name}  className='rounded-full w-75 h-75 object-cover ' draggable={false}/>
       </div>
 
       <div className='text-center tracking-wider'>
