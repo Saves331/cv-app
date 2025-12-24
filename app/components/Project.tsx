@@ -12,14 +12,15 @@ function Project({projects}: Project) {
   return (
     <section className="h-screen" id="projects">
 
-        <div>
-
+        <div className="text-center">
+          <h3>Browse my projects</h3>
+          <h2 className="section-text">Projects</h2>
         </div>
 
 
-        <div>
+        <div className="max-w-[1080px] w-full mx-auto flex">
           {projects.map((project, index) => ( 
-          <div key={index}>
+          <div key={index} className="py-4 px-5 border w-1/2 rounded">
             <h2>{project.title}</h2>
             <p>{project.description}</p>
             <span>{project.year}</span>
