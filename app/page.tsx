@@ -46,6 +46,7 @@ export default function Home() {
     title: projectItem.title,
     description: projectItem.description,
     year: projectItem.year,
+    image: projectItem.image
   }));
 
   const skill = mappedCvData.filter((item: any) => item.type === 'skill').map((skillItem: any) => ({
