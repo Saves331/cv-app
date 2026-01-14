@@ -22,18 +22,26 @@ function SkillComponent({ skills }: Props) {
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-1 w-full md:w-fit">
         {skills.map((skill, index) => (
-          <div
-            key={index}
-            className="flex flex-col gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-all hover:shadow-md dark:border-gray-700 dark:bg-gray-800 md:flex-row md:items-center md:justify-between md:gap-10 md:p-5 w-full"
-          >
-            <h1 className="text-xl font-semibold text-gray-800 md:text-2xl">
-              {skill.name}
+         <div
+  key={index}
+ className="
+  flex flex-col gap-4 rounded-lg
+  bg-(--card) text-(--text)
+  border border-gray-700
+  p-4 shadow-sm transition-all hover:shadow-md
+  md:flex-row md:items-center md:justify-between md:gap-10 md:p-5 w-full
+"
+
+>
+           <h1 className="text-xl font-semibold text-(--text) md:text-2xl">
+            {skill.name}
             </h1>
+
 
             <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-3">
               <span className="text-base font-medium text-gray-600 dark:text-gray-300 md:text-lg">
-                Level:
-              </span>
+                    Level:
+            </span>
 
               <div className="flex items-center gap-2">
                 <div className="flex gap-1">
