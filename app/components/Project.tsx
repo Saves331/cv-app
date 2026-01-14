@@ -1,41 +1,37 @@
-import { url } from "inspector";
-
 type ProjectProps = {
   title: string;
   description: string;
   year: string;
   image: string;
-  url: string; 
+  url: string;
 };
 
-type Project = {
+type Props = {
   projects: ProjectProps[];
 };
 
-function Project({ projects }: Project) {
+function Project({ projects }: Props) {
+  if (!projects.length) return null;
+
   return (
     <section
       id="projects"
       className="flex flex-col justify-center items-center min-h-screen px-6"
     >
-      {/* Section heading */}
       <div className="text-center tracking-wider mb-12">
         <h3>Browse my projects</h3>
-        <h2 className="section-text">Projects</h2>
+        <h2 className="section-text">Main Projects</h2>
       </div>
 
-      {/* Projects grid */}
       <div className="max-w-[1080px] w-full grid grid-cols-1 md:grid-cols-2 gap-8">
-        
         {projects.map((project, index) => (
           <a
-            href={project.url}
-            target="_blank"
             key={index}
+            href={project.url || "#"}
+            target="_blank"
+            rel="noopener noreferrer"
             className="border rounded-xl overflow-hidden p-5 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg max-h-100 h-full cursor-pointer"
           >
-            {/* Image */}
-            
             <img
               src={`/images/${project.image}`}
               alt={project.title}
@@ -43,7 +39,6 @@ function Project({ projects }: Project) {
               draggable={false}
             />
 
-            {/* Content */}
             <div className="text-center tracking-wider">
               <h2 className="text-xl font-semibold mb-2">
                 {project.title}
