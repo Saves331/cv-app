@@ -17,7 +17,7 @@ export async function GET() {
 
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: "CV!A1:D100",
+      range: "CV!A1:G100",
     });
 
     return Response.json({ data: response.data.values });

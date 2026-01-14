@@ -6,6 +6,7 @@ import Experience from "./components/Experience";
 import Project from "./components/Project";
 import Skill from "./components/Skill";
 import Navbar from "./components/Navbar";
+import Contact from "./components/Contact"
 import './globals.css';
 
 
@@ -39,6 +40,8 @@ export default function Home() {
     description: row[2] || '',
     year: row[3] || '',
     image: row[4] || '',
+    url: row[5] || '',
+    email: row[6] || ''
   }))
 
   const about = mappedCvData.find((item: any) => item.type === 'about');
@@ -47,7 +50,8 @@ export default function Home() {
     title: projectItem.title,
     description: projectItem.description,
     year: projectItem.year,
-    image: projectItem.image
+    image: projectItem.image,
+    url: projectItem.url
   }));
 
   const skill = mappedCvData.filter((item: any) => item.type === 'skill').map((skillItem: any) => ({
@@ -56,6 +60,8 @@ export default function Home() {
   }));
 
   const webLink = mappedCvData.filter((item: any) => item.type === 'weblink');
+  const contact = mappedCvData.filter((item: any) => item.type === 'about')
+ 
 
   console.log(webLink);
   
@@ -78,7 +84,8 @@ export default function Home() {
         <Project projects={project}></Project>
        
 
-       
+        {contact && (<Contact email={about.email}></Contact>)}
+        
       </div>
     </>
   );
