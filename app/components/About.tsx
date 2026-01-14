@@ -20,7 +20,12 @@ function About({ name, role, year }: AboutProps) {
         <h1>{name}</h1>
         <h2>{role}</h2>
 
-        <button className='border p-3 cursor-pointer hover:bg-gray-200 hover:text-black  transition-all duration-300'>Download CV</button>
+        <a href="/Životopis-Luterančík.pdf" download>
+          <button className='border p-3 cursor-pointer hover:bg-gray-200 hover:text-black transition-all duration-300'>
+            Download CV
+          </button>
+        </a>
+
 
       <div className='flex justify-center gap-3 mt-4'>
        <a href="https://github.com/Saves331" className='hover:text-gray-400'><Github size={24}/></a> 
