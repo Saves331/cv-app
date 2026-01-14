@@ -38,6 +38,7 @@ export default function Home() {
     title: row[1] || '',
     description: row[2] || '',
     year: row[3] || '',
+    image: row[4] || '',
   }))
 
   const about = mappedCvData.find((item: any) => item.type === 'about');
