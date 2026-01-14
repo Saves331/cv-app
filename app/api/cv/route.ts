@@ -1,4 +1,5 @@
 import { google } from "googleapis";
+import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
@@ -20,8 +21,8 @@ export async function GET() {
       range: "CV!A1:G100",
     });
 
-    return Response.json({ data: response.data.values });
+    return NextResponse.json({ data: response.data.values });
   } catch (err: any) {
-    return Response.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
