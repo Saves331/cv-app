@@ -13,16 +13,12 @@ type Props = {
 
 function SkillComponent({ skills }: Props) {
 
-    const [des, setDes] = useState(false);
+    const [openIndex, setOpenIndex] = useState<number | null>(null)
 
-    function toggleDes(name:String) {
-        setDes(prev => {
-            console.log(name, "toggle to", !prev)
-            return !prev;
-        }
-            
-        )
+    function toggleDropdown(index:number) {
+            setOpenIndex((prev) => (prev === index ? null : index))
     }
+
   return (
     <section className="min-h-screen flex justify-center items-center flex-col gap-20" id="experience">
 
@@ -33,20 +29,20 @@ function SkillComponent({ skills }: Props) {
 
         
         
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 w-full md:w-fit">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 w-full lg:w-fit">
     {skills.map((skill, index) => (
         <div 
             key={index} 
-            // CHANGED:  Adjusted for grid layout - removed mb-4, sm:mb-6
-            className="flex flex-col gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-all hover: shadow-md dark:border-gray-700 dark:bg-gray-800 md:flex-row md:items-center md:justify-between md:gap-10 md:p-5 w-full"
+           
+            className="relative flex flex-col gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-all hover: shadow-md dark:border-gray-700 dark:bg-gray-800 lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg   :p-5 w-full"
         >
-            {/* CHANGED: Responsive breakpoint changed from sm to md */}
-            <h1 className="text-xl font-semibold text-gray-800 md:text-2xl">
+           
+            <h1 className="text-xl font-semibold text-gray-800 lg:text-2xl">
                 {skill.name}
             </h1>
-            {/* CHANGED: Responsive breakpoint changed from sm to md */}
-            <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-3">
-                {/* CHANGED: Responsive breakpoint changed from sm to md */}
+          
+            <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-3">
+               
                 <button
   className="
     cursor-pointer
@@ -67,22 +63,30 @@ function SkillComponent({ skills }: Props) {
     dark:bg-gray-700
     dark:text-gray-200
     dark:hover:bg-gray-600
-    md:text-base
+    lg:text-base
   "
 
-  onClick={() => toggleDes(skill.name)}
+  onClick={() => toggleDropdown(index)}
 >
   Description
 </button>
 
                 
-                <div className="flex items-center gap-2">
-                    
-                    {/* CHANGED: Responsive breakpoint changed from sm to md */}
-                    
-                </div>
+              
             </div>
+             {openIndex === index && (
+                <div className="z-[100] absolute top-[100] mt-2 w-full rounded-md border border-gray-200 bg-white p-3 text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 lg:mt-0 lg:w-80">
+                  <p className="text-sm">
+                    <span className="font-semibold">Level:</span> {skill.level}
+                  </p>
+                  <p className="text-sm mt-1">
+                    This is the dropdown content for <b>{skill.name}</b>.
+                  </p>
+                </div>
+              )}
         </div>
+
+        
     ))}
 </div>
         
