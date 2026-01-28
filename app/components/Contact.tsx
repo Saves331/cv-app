@@ -19,7 +19,7 @@ function Contact({email} : ContactProps) {
       {/* Contact cards */}
       <div className="flex flex-col md:flex-row gap-6">
         {/* Email */}
-        <div className="border rounded-xl px-6 py-4 flex items-center gap-3 hover:shadow-lg transition-all duration-300">
+        <div className="border rounded-xl px-6 py-4 flex items-center gap-3 hover:shadow-lg transition-all duration-300 antiBackDrop">
           <Mail size={22} />
           <a
             href={`mailto:${email}`}
@@ -30,7 +30,7 @@ function Contact({email} : ContactProps) {
         </div>
 
         {/* LinkedIn */}
-        <div className="border rounded-xl px-6 py-4 flex items-center gap-3 hover:shadow-lg transition-all duration-300">
+        <div className="border rounded-xl px-6 py-4 flex items-center gap-3 hover:shadow-lg transition-all duration-300 antiBackDrop">
           <Linkedin size={22} />
           <a
             href="https://www.linkedin.com/in/martin-luteran%C4%8D%C3%ADk-604774326/"
@@ -42,7 +42,7 @@ function Contact({email} : ContactProps) {
         </div>
 
         {/* GitHub */}
-        <div className="border rounded-xl px-6 py-4 flex items-center gap-3 hover:shadow-lg transition-all duration-300">
+        <div className="border rounded-xl px-6 py-4 flex items-center gap-3 hover:shadow-lg transition-all duration-300 antiBackDrop">
           <Github size={22} />
           <a
             href="https://github.com/Saves331"

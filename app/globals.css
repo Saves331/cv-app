@@ -80,3 +80,7 @@ p {
   font-size: 3rem;
   font-weight: bolder;
 }
+
+.antiBackDrop {
+  z-index: 45;
+}

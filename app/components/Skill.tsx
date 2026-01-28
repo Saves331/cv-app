@@ -64,6 +64,7 @@ function SkillComponent({ skills }: Props) {
     dark:text-gray-200
     dark:hover:bg-gray-600
     lg:text-base
+    antiBackDrop
   "
 
   onClick={() => toggleDropdown(index)}
@@ -75,15 +76,27 @@ function SkillComponent({ skills }: Props) {
               
             </div>
              {openIndex === index && (
-                <div className="z-[100] absolute top-[100] mt-2 w-full rounded-md border border-gray-200 bg-white p-3 text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 lg:mt-0 lg:w-80">
-                  <p className="text-sm">
-                    <span className="font-semibold">Level:</span> {skill.level}
-                  </p>
-                  <p className="text-sm mt-1">
-                    This is the dropdown content for <b>{skill.name}</b>.
-                  </p>
-                </div>
-              )}
+  <>
+    {/* Backdrop (click anywhere outside closes) */}
+    <div
+      className="fixed inset-0 z-40"
+      onMouseDown={() => setOpenIndex(null)}
+    />
+
+    {/* Dropdown (stays attached to the card) */}
+    <div
+      className="absolute top-full left-0 mt-2 w-full rounded-md border p-3 bg-gray-200 z-50"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <h2 className="text-sm text-gray-500 text-center">
+        <span className="font-semibold text-blue-500">Level:</span> {skill.level}
+      </h2>
+      <p className="text-sm mt-1">
+        <b>{skill.name}</b>.
+      </p>
+    </div>
+  </>
+)}
         </div>
 
         

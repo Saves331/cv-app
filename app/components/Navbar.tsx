@@ -42,7 +42,7 @@ function Navbar({ name, webLink }: Props) {
         <button
           onClick={toggleBurger}
           ref={buttonRef}
-          className="flex flex-col w-10 space-y-2 cursor-pointer md:hidden"
+          className="flex flex-col w-10 space-y-2 cursor-pointer md:hidden antiBackDrop"
         >
           <span className="h-1 bg-white w-full rounded-full"></span>
           <span className="h-1 bg-white w-full rounded-full"></span>
@@ -53,7 +53,7 @@ function Navbar({ name, webLink }: Props) {
           {webLink.map((link, index) => (
             <li
               key={index}
-              className="text-2xl lg:text-3xl font-light border-b-2 border-transparent py-2 hover:border-gray-400 hover:text-gray-300 transition-all duration-300"
+              className="text-2xl lg:text-3xl font-light border-b-2 border-transparent py-2 hover:border-gray-400 hover:text-gray-300 transition-all duration-300 antiBackDrop"
             >
               <a href={`#${link.description}`}>{link.title}</a>
             </li>
@@ -62,7 +62,7 @@ function Navbar({ name, webLink }: Props) {
       </div>
 
       {isBurgerOpen && (
-        <div className="absolute top-full left-0 w-full bg-gray-800 text-white p-4 md:hidden z-50 border-t border-gray-700">
+        <div className="absolute top-full left-0 w-full bg-gray-800 text-white p-4 md:hidden z-50 border-t border-gray-700 antiBackDrop">
           <ul
             ref={menuRef}
             className="flex flex-col space-y-4 items-center text-2xl"

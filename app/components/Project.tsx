@@ -30,7 +30,7 @@ function Project({ projects }: Props) {
             href={project.url || "#"}
             target="_blank"
             rel="noopener noreferrer"
-            className="border rounded-xl overflow-hidden p-5 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg max-h-100 h-full cursor-pointer"
+            className="border rounded-xl overflow-hidden p-5 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg max-h-100 h-full cursor-pointer antiBackDrop"
           >
             <img
               src={`/images/${project.image}`}
