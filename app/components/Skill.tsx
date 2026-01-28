@@ -59,7 +59,7 @@ function SkillComponent({ skills }: Props) {
   <div
     className={`absolute top-full left-0 mt-2 w-full rounded-md border p-3 bg-gray-200 z-50 opacity-0 overflow-hidden
       transition-[max-height,opacity,transform] duration-300 ease-in
-      ${openIndex === index ? "max-h-96 translate-y-0 opacity-100" : "max-h-0 -translate-y-1"}
+      ${openIndex === index ? "max-h-96 opacity-100" : "max-h-0 "}
     `}
     onMouseDown={(e) => e.stopPropagation()} // so clicks inside don't close via backdrop
   >
