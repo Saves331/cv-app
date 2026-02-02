@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Contact from "./components/Contact";
 import "./globals.css";
 
+
 type CvRow = {
   type: string;
   title: string;
