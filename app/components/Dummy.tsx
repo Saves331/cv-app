@@ -2,7 +2,7 @@ import React from 'react'
 
 function Dummy() {
   return (
-    <div id=''>Dummy</div>
+    <div></div>
   )
 }
 
