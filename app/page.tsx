@@ -7,6 +7,7 @@ import Skill from "./components/Skill";
 import Navbar from "./components/Navbar";
 import Contact from "./components/Contact";
 import "./globals.css";
+import Dummy from "./components/Dummy";
 
 
 type CvRow = {
@@ -22,6 +23,41 @@ type CvRow = {
 export default function Home() {
   const [cvData, setCvData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+
+ useEffect(() => {
+  const scrollToHashWithRetry = () => {
+    const hash = window.location.hash.slice(1); // bez #
+    if (!hash) return;
+
+    let tries = 0;
+    const maxTries = 30; // ~30 * 50ms = 1.5s
+
+    const tick = () => {
+      const el = document.getElementById(hash);
+
+      // DEBUG (ak chceš): uvidíš či existuje
+      // console.log("hash:", hash, "found:", !!el, "try:", tries);
+
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+
+      tries++;
+      if (tries < maxTries) setTimeout(tick, 50);
+    };
+
+    tick();
+  };
+
+  // pri priamom otvorení / refresh (napr. .../#skills)
+  scrollToHashWithRetry();
+
+  // pri kliknutí na odkazy v appke
+  window.addEventListener("hashchange", scrollToHashWithRetry);
+  return () => window.removeEventListener("hashchange", scrollToHashWithRetry);
+}, [loading]);
+
 
   useEffect(() => {
     fetch("/api/cv")
@@ -96,7 +132,12 @@ export default function Home() {
           />
         )}
 
-        <Skill skills={skills} />
+        
+          
+          <Skill skills={skills} />
+          <Dummy></Dummy>
+    
+        
 
         <Project projects={projects} />
 

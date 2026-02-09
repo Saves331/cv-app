@@ -21,7 +21,9 @@ export default function SkillComponent({ skills }: Props) {
   );
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center gap-10 px-4 py-16">
+    <section
+      id="skills"
+     className="min-h-screen flex flex-col items-center justify-center gap-10 px-4 py-16">
       {/* Title */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
