@@ -20,7 +20,7 @@ function About({ name, role, year }: AboutProps) {
         <h1>{name}</h1>
         <h2>{role}</h2>
 
-        <a href="/Životopis-Luterančík.pdf" download className='relative z-60'>
+        <a href="/CV_luteranck.pdf" download className='relative z-60'>
           <button className=' antiBackDrop border p-3 cursor-pointer hover:bg-gray-200 hover:text-black transition-all duration-300'>
             Download CV
           </button>
