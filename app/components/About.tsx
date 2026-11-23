@@ -1,5 +1,5 @@
 import profilePhoto from '../../public/images/profile.jpg';
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, Download } from "lucide-react";
 
 type AboutProps = {
     name: string;
@@ -9,29 +9,35 @@ type AboutProps = {
 
 function About({ name, role, year }: AboutProps) {
   return (
-    <section className='flex flex-col md:flex-row justify-center items-center gap-20 h-[85vh]'>
+    <section className='mx-auto max-w-6xl px-6 flex flex-col md:flex-row justify-center items-center gap-14 md:gap-24 min-h-[calc(100vh-72px)] py-16'>
 
-      <div>
-          <img src={profilePhoto.src} alt={name}  className='rounded-full w-75 h-75 object-cover ' draggable={false}/>
+      {/* Photo in a retro "sun" frame */}
+      <div className='relative shrink-0 isolate'>
+        <div className='absolute -inset-4 rounded-full bg-mustard border-2 border-ink' />
+        <div className='absolute -inset-4 rounded-full translate-x-3 translate-y-3 border-2 border-ink -z-10 bg-accent' />
+        <img
+          src={profilePhoto.src}
+          alt={name}
+          className='relative rounded-full w-64 h-64 md:w-72 md:h-72 object-cover border-2 border-ink grayscale-[25%] sepia-[15%]'
+          draggable={false}
+        />
       </div>
 
-      <div className='text-center tracking-wider'>
-        <h3>Hello, I'm</h3>
+      <div className='text-center md:text-left max-w-xl'>
+        <h3>Hello, I&apos;m</h3>
         <h1>{name}</h1>
-        <h2>{role}</h2>
+        <h2 className='font-display italic font-normal text-2xl md:text-3xl text-ink-soft mt-2'>
+          {role}
+        </h2>
+        {year && <span className='retro-tag mt-5'>{year}</span>}
 
-        <a href="/CV_luterancik_AJ.pdf" download className='relative z-60'>
-          <button className=' antiBackDrop border p-3 cursor-pointer hover:bg-gray-200 hover:text-black transition-all duration-300'>
-            Download CV
-          </button>
-        </a>
-
-
-      <div className='flex justify-center gap-3 mt-4'>
-       <a href="https://github.com/Saves331" className='hover:text-gray-400 antiBackDrop'><Github size={24}/></a> 
-       <a href="https://www.linkedin.com/in/martin-luteran%C4%8D%C3%ADk-604774326/" className='hover:text-gray-400 antiBackDrop'><Linkedin size={24}/></a> 
-      </div>
-        
+        <div className='flex flex-wrap items-center justify-center md:justify-start gap-4 mt-8'>
+          <a href="/CV_luterancik_AJ.pdf" download className='retro-btn relative z-60 antiBackDrop'>
+            <Download size={16} /> Download CV
+          </a>
+          <a href="https://github.com/Saves331" aria-label="GitHub" className='retro-icon antiBackDrop'><Github size={20}/></a>
+          <a href="https://www.linkedin.com/in/martin-luteran%C4%8D%C3%ADk-604774326/" aria-label="LinkedIn" className='retro-icon antiBackDrop'><Linkedin size={20}/></a>
+        </div>
       </div>
 
     </section>

@@ -33,54 +33,61 @@ function Navbar({ name, webLink }: Props) {
   }, [isBurgerOpen]);
 
   return (
-    <section className="flex justify-between items-center p-4 bg-gray-800 text-white relative h-[15vh] lg:px-15">
-      <div className="text-3xl lg:text-4xl font-semibold lg:w-1/2">
-        {name}
-      </div>
+    <nav className="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b-2 border-ink">
+      <div className="mx-auto max-w-6xl flex justify-between items-center px-4 md:px-8 h-[72px] relative">
+        <a href="#" className="flex items-center gap-3 antiBackDrop">
+          <span className="w-4 h-4 rounded-full bg-accent border-2 border-ink" />
+          <span className="font-display text-2xl md:text-3xl font-extrabold italic tracking-tight">
+            {name}
+          </span>
+        </a>
 
-      <div className="md:flex md:w-1/2">
         <button
           onClick={toggleBurger}
           ref={buttonRef}
-          className="flex flex-col w-10 space-y-2 cursor-pointer md:hidden antiBackDrop"
+          aria-label="Toggle menu"
+          className="flex flex-col justify-center w-11 h-11 gap-1.5 px-2.5 border-2 border-ink rounded-md bg-paper shadow-[3px_3px_0_var(--ink)] cursor-pointer md:hidden antiBackDrop"
         >
-          <span className="h-1 bg-white w-full rounded-full"></span>
-          <span className="h-1 bg-white w-full rounded-full"></span>
-          <span className="h-1 bg-white w-full rounded-full"></span>
+          <span className="h-0.5 bg-ink w-full" />
+          <span className="h-0.5 bg-ink w-full" />
+          <span className="h-0.5 bg-ink w-full" />
         </button>
 
-        <ul className="hidden md:flex space-x-4 md:gap-5 lg:gap-10 justify-center w-full">
+        <ul className="hidden md:flex items-center gap-8 lg:gap-10">
           {webLink.map((link, index) => (
-            <li
-              key={index}
-              className="text-2xl lg:text-3xl font-light border-b-2 border-transparent py-2 hover:border-gray-400 hover:text-gray-300 transition-all duration-300 antiBackDrop"
-            >
-              <a href={`#${link.description}`}>{link.title}</a>
+            <li key={index} className="antiBackDrop">
+              <a
+                href={`#${link.description}`}
+                className="text-sm uppercase tracking-[0.18em] font-bold border-b-2 border-transparent pb-1 hover:border-accent hover:text-accent transition-colors duration-200"
+              >
+                {link.title}
+              </a>
             </li>
           ))}
         </ul>
-      </div>
 
-      {isBurgerOpen && (
-        <div className="absolute top-full left-0 w-full bg-gray-800 text-white p-4 md:hidden z-50 border-t border-gray-700 antiBackDrop">
-          <ul
-            ref={menuRef}
-            className="flex flex-col space-y-4 items-center text-2xl"
-          >
-            {webLink.map((link, index) => (
-              <li key={index}>
-                <a
-                  href={`#${link.description}`}
-                  onClick={() => setIsBurgerOpen(false)}
-                >
-                  {link.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </section>
+        {isBurgerOpen && (
+          <div className="absolute top-full left-0 w-full bg-paper border-b-2 border-ink p-6 md:hidden z-50 antiBackDrop">
+            <ul
+              ref={menuRef}
+              className="flex flex-col gap-5 items-center text-sm uppercase tracking-[0.18em] font-bold"
+            >
+              {webLink.map((link, index) => (
+                <li key={index}>
+                  <a
+                    href={`#${link.description}`}
+                    onClick={() => setIsBurgerOpen(false)}
+                    className="hover:text-accent"
+                  >
+                    {link.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </nav>
   );
 }
 

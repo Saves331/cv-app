@@ -5,55 +5,44 @@ type ContactProps = {
 }
 
 function Contact({email} : ContactProps) {
+  const links = [
+    { icon: Mail, label: email, href: `mailto:${email}`, external: false },
+    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/martin-luteran%C4%8D%C3%ADk-604774326/", external: true },
+    { icon: Github, label: "GitHub", href: "https://github.com/Saves331", external: true },
+  ];
+
   return (
-    <section
-      id="contact"
-      className="flex flex-col justify-center items-center min-h-[60vh] px-6"
-    >
-      {/* Heading */}
-      <div className="text-center tracking-wider mb-10">
-        <h3>Get in touch</h3>
-        <h2 className="section-text">Contact Me</h2>
-      </div>
-
-      {/* Contact cards */}
-      <div className="flex flex-col md:flex-row gap-6">
-        {/* Email */}
-        <div className="border rounded-xl px-6 py-4 flex items-center gap-3 hover:shadow-lg transition-all duration-300 antiBackDrop">
-          <Mail size={22} />
-          <a
-            href={`mailto:${email}`}
-            className="hover:text-gray-400 transition"
-          >
-            {email}
-          </a>
+    <>
+      <section
+        id="contact"
+        className="mx-auto max-w-6xl flex flex-col justify-center items-center min-h-[60vh] px-6 py-24 border-t-2 border-ink"
+      >
+        <div className="text-center mb-12">
+          <h3>Get in touch</h3>
+          <h2 className="section-text">Contact me</h2>
+          <div className="retro-rule"><span /></div>
         </div>
 
-        {/* LinkedIn */}
-        <div className="border rounded-xl px-6 py-4 flex items-center gap-3 hover:shadow-lg transition-all duration-300 antiBackDrop">
-          <Linkedin size={22} />
-          <a
-            href="https://www.linkedin.com/in/martin-luteran%C4%8D%C3%ADk-604774326/"
-            target="_blank"
-            className="hover:text-gray-400 transition"
-          >
-            LinkedIn
-          </a>
+        <div className="flex flex-col md:flex-row gap-6">
+          {links.map(({ icon: Icon, label, href, external }) => (
+            <a
+              key={href}
+              href={href}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noopener noreferrer" : undefined}
+              className="retro-card retro-card-hover px-6 py-4 flex items-center gap-3 font-bold text-sm hover:text-accent antiBackDrop"
+            >
+              <Icon size={20} />
+              {label}
+            </a>
+          ))}
         </div>
+      </section>
 
-        {/* GitHub */}
-        <div className="border rounded-xl px-6 py-4 flex items-center gap-3 hover:shadow-lg transition-all duration-300 antiBackDrop">
-          <Github size={22} />
-          <a
-            href="https://github.com/Saves331"
-            target="_blank"
-            className="hover:text-gray-400 transition"
-          >
-            GitHub
-          </a>
-        </div>
-      </div>
-    </section>
+      <footer className="border-t-2 border-ink bg-ink text-paper text-center text-xs tracking-[0.2em] uppercase py-5">
+        © {new Date().getFullYear()} · Made with care
+      </footer>
+    </>
   );
 }
 

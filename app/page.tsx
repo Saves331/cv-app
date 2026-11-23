@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Contact from "./components/Contact";
 import "./globals.css";
 import Dummy from "./components/Dummy";
+import Loader from "./components/Loader";
 
 
 type CvRow = {
@@ -73,16 +74,12 @@ export default function Home() {
   }, []);
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen text-3xl font-semibold">
-        Loading...
-      </div>
-    );
+    return <Loader />;
   }
 
   if (!cvData?.data || !Array.isArray(cvData.data)) {
     return (
-      <div className="flex justify-center items-center h-screen text-2xl">
+      <div className="flex justify-center items-center h-screen font-display text-2xl text-accent">
         Error loading data
       </div>
     );
